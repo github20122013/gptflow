@@ -70,7 +70,7 @@ CREATE TABLE `gptflow` (
   `createBy` varchar(100) NOT NULL,
   `updateBy` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8;
 
 
 -- concentrate.route definition
@@ -90,4 +90,4 @@ CREATE TABLE `route` (
   `createBy` varchar(100) NOT NULL,
   `updateBy` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会话工作流连线，表述两通回话之间的输入输出，以及上下步骤的关联关系';
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='会话工作流连线，表述两通回话之间的输入输出，以及上下步骤的关联关系';
