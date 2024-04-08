@@ -1,28 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>gptflow</title>
+    <title>flow</title>
 
-    <link href="/gptflow/css/bootstrap/bootstrap-4.6.min.css" rel="stylesheet" type="text/css"/>
-    <link href="/gptflow/css/main.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/gptflow/css/bootstrap/bootstrap-4.6.min.css" />
+    <link rel="stylesheet" type="text/css" href="/gptflow/css/bootstrap/bootstrap.cust.css" />
 
-    <script src="/gptflow/js/page.js" language="javascript" type="text/javascript"></script>
-    <script src="/gptflow/js/bootstrap/bootstrap.min.js" language="javascript" type="text/javascript"></script>
-    <script src="/gptflow/js/jquery-3.3.1.min.js" language="javascript" type="text/javascript"></script>
+    <script type="text/javascript" src="/gptflow/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/gptflow/js/page.js" ></script>
+    <script type="text/javascript" src="/gptflow/js/bootstrap/bootstrap.min.js"></script>
 
-    <style>
-        body {
-            background: white;
-            text-align: left;
-        }
-
-        .savebox {
-            width: 180px;
-            font-size: 12px;
-        }
-    </style>
     <script>
 
         function openWinCenter(openUrl, wWidth, wHeight) {
@@ -45,7 +35,6 @@
                 openWinCenter(url);
             }
         }
-
 
     </script>
 </head>

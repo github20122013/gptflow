@@ -11,11 +11,9 @@ import java.util.*;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 
-import com.concentrate.gpt.gptflow.base.PageCond;
 import com.concentrate.gpt.gptflow.define.FeatureEnum;
-import com.concentrate.gpt.gptflow.util.CommonUtil;
+import com.concentrate.gpt.gptflow.util.CsvReader;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -705,7 +703,7 @@ public abstract class AbstractedBaseDAO {
 			}
 
 			// 处理字段值，使其符合CSV格式
-			result = CommonUtil.processCsvValue(result);//处理字符格式
+			result = CsvReader.processCsvValue(result);//处理字符格式
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			try {
 				Date date = dateFormat.parse(result);

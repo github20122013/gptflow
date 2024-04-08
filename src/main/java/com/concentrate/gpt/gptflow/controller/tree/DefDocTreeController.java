@@ -85,7 +85,7 @@ public class DefDocTreeController {
         }
         Collection<Node> roots1 = treeService.getRoots();
         map.put("roots:",roots1);
-        ResponseBuilder.resultObjectJson(response, map, request);
+        ResponseBuilder.jsonpResponse(response, map, request);
     }
 
     @RequestMapping("/defdoc/initNewTree")
@@ -105,7 +105,7 @@ public class DefDocTreeController {
             logger.error("请求 rsf 异常", e);
         }
         logger.info("initNewTree初始化字典树map:{}",map);
-        ResponseBuilder.resultObjectJson(response, map, request);
+        ResponseBuilder.jsonpResponse(response, map, request);
     }
     
 }

@@ -3,7 +3,6 @@ package com.concentrate.gpt.gptflow.dao.flow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import com.concentrate.gpt.gptflow.base.AbstractedBaseDAO;
 public class FlowDAO extends AbstractedBaseDAO{
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
     
     public String getTBName(){
     	return "gptflow";	
@@ -28,7 +26,7 @@ public class FlowDAO extends AbstractedBaseDAO{
 	public JdbcTemplate getJdbcTemplate(){
 		return 	jdbcTemplate;
 	}
-
+    
     public String[] getUniqKeys(){
     	return "id,parentId".split(",");
     }

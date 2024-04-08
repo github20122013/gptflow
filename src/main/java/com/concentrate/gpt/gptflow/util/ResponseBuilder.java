@@ -31,9 +31,9 @@ public class ResponseBuilder {
 	}
 
 	/*
-	 * 返回json 结果
+	 * 返回jsonp 结果
 	 */
-	public static void resultObjectJson(HttpServletResponse response, Object object, HttpServletRequest request) {
+	public static void jsonpResponse(HttpServletResponse response, Object object, HttpServletRequest request) {
 		response.setHeader("Content-Type", "application/javascript;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		StringBuilder sb = new StringBuilder();
@@ -49,4 +49,5 @@ public class ResponseBuilder {
 			throw new RuntimeException("HelpUtil resultObjectJson throw exception", e);
 		}
 	}
+
 }

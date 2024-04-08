@@ -5,6 +5,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -17,6 +18,8 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by 16070360 on 2018/9/12.
+ * Created by code2stable on 2018/9/12.
  */
 public class HttpUtil {
     //log
@@ -79,6 +82,13 @@ public class HttpUtil {
         //获取HTTP连接
         CloseableHttpClient httpClient = getHttpClient();
         HttpPost post = new HttpPost(url);
+        RequestConfig requestConfig = RequestConfig.custom().
+                setConnectTimeout(180) //设置连接超时时间
+                .setConnectionRequestTimeout(180) // 设置请求超时时间
+                .setSocketTimeout(60 * 1000)
+                .setRedirectsEnabled(true) //默认允许自动重定向
+                .build();
+        post.setConfig(requestConfig);
         try {
             UrlEncodedFormEntity requestEntity = new UrlEncodedFormEntity(formData, "utf-8");
             post.setEntity(requestEntity);
@@ -139,6 +149,15 @@ public class HttpUtil {
         }
     }
 
+    public static String getDecodedUrl(String host, String param){
+        String result = host +"?"+ param;
+        try {
+            result = URLDecoder.decode(host,"utf-8")+"?"+URLDecoder.decode(param,"utf-8");
+        } catch (UnsupportedEncodingException e) {
+        }
+        return result;
+    }
+
     /**
      * Http接口通知-Get请求
      *
@@ -151,13 +170,13 @@ public class HttpUtil {
         HttpGet httpGet = new HttpGet(url);
         try {
             // 为httpGet实例设置配置
-            /*RequestConfig requestConfig = RequestConfig.custom().
-                setConnectTimeout(180 * 1000) //设置连接超时时间
-                .setConnectionRequestTimeout(180 * 1000) // 设置请求超时时间
-                .setSocketTimeout(180 * 1000)
+            RequestConfig requestConfig = RequestConfig.custom().
+                setConnectTimeout(200) //设置连接超时时间
+                .setConnectionRequestTimeout(200) // 设置请求超时时间
+                .setSocketTimeout(300 * 1000)
                 .setRedirectsEnabled(true) //默认允许自动重定向
                 .build();
-            httpPost.setConfig(requestConfig);*/
+            httpGet.setConfig(requestConfig);
             //为httpGet设置请求头
             httpGet.setHeader("Accept", "application/json;charset=UTF-8");
             httpGet.setHeader("Accept-Encoding", "gzip, deflate, sdch");
@@ -195,13 +214,13 @@ public class HttpUtil {
         //获取HTTP连接
         CloseableHttpClient httpClient = getHttpClient();
         HttpPost httpPost = new HttpPost(url);
-        /*RequestConfig requestConfig = RequestConfig.custom().
-                setConnectTimeout(180 * 1000) //设置连接超时时间
-                .setConnectionRequestTimeout(180 * 1000) // 设置请求超时时间
-                .setSocketTimeout(180 * 1000)
+        RequestConfig requestConfig = RequestConfig.custom().
+                setConnectTimeout(180) //设置连接超时时间
+                .setConnectionRequestTimeout(180) // 设置请求超时时间
+                .setSocketTimeout(60 * 1000)
                 .setRedirectsEnabled(true) //默认允许自动重定向
                 .build();
-        httpPost.setConfig(requestConfig);*/
+        httpPost.setConfig(requestConfig);
         //httpPost.setHeader("Content-Type", ContentType.APPLICATION_JSON.toString());
         httpPost.setHeader("Content-Type", "application/json;charset=UTF-8");
         try {

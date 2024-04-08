@@ -1,4 +1,4 @@
-function SnPage(frm, action, totalPage, currentPage) {
+function Page(frm, action, totalPage, currentPage) {
 	this.currentPage = currentPage;
 	this.totalPage = totalPage;
 	this.form = frm;
